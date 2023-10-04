@@ -30,7 +30,8 @@ class BasePage:
         return wait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
     def go_to_element(self, element):
-        # actions = ActionChains(self.driver)
-        # actions.move_to_element(element).perform()
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    def scroll_to_element(self, element):
         self.driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
 
